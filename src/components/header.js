@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-
 function samePageLinkNavigation(event) {
     if (
         event.defaultPrevented ||
@@ -21,6 +20,9 @@ function samePageLinkNavigation(event) {
     }
     return true;
 }
+const handleLinkClick = (path) => {
+    window.location.hash = path;
+};
 
 function LinkTab(props) {
     return (
@@ -35,6 +37,7 @@ function LinkTab(props) {
 
             // }}
             aria-current={props.selected && 'page'}
+
             {...props}
         />
     );
@@ -77,10 +80,10 @@ function Header(props) {
                 role="navigation"
                 centered
             >
-                <LinkTab label="Profile" href="./" />
-                <LinkTab label="Travel" href="./travel" />
-                <LinkTab label="Contact" href="./contact" />
-                <LinkTab label="Privacy" href="./privacy" />
+                <LinkTab label="Profile" href="#/" onClick={(e) => { e.preventDefault(); handleLinkClick('/'); }} />
+                <LinkTab label="Travel" href="#/travel" onClick={(e) => { e.preventDefault(); handleLinkClick('/travel'); }} />
+                <LinkTab label="Contact" href="#/contact" onClick={(e) => { e.preventDefault(); handleLinkClick('/contact'); }} />
+                <LinkTab label="Privacy" href="#/privacy" onClick={(e) => { e.preventDefault(); handleLinkClick('/privacy'); }} />
             </Tabs>
         </Box>
     </div>;

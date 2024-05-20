@@ -1,6 +1,6 @@
 
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home.js';
 import Contact from './pages/Contact.js';
 import Privacy from './pages/Privacy.js';
@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<div><Header selectedInd={0} /> <Home /></div>} />
+          <Route path="/" exact element={<div><Header selectedInd={0} /> <Home /></div>} />
           <Route path="/travel" element={<div><Header selectedInd={1} /><Travel /></div>} />
           <Route path="/contact" element={<div><Header selectedInd={2} /><Contact /></div>} />
           <Route path="/privacy" element={<div><Header selectedInd={3} /><Privacy /></div>} />
