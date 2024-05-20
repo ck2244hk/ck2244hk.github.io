@@ -16,7 +16,7 @@ import selfie from '../assets/selfie01.png'
 
 function Home() {
     const imageStyle = {
-        maxWidth: '100%',
+        maxWidth: '280px',
         height: 'auto', // Maintain aspect ratio
     };
 
