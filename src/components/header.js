@@ -40,8 +40,8 @@ function LinkTab(props) {
     );
 }
 
-function Header() {
-    const [value, setValue] = React.useState(0);
+function Header(props) {
+    const [value, setValue] = React.useState(props.selectedInd);
 
     const handleChange = (event, newValue) => {
         // event.type can be equal to focus with selectionFollowsFocus.
@@ -50,6 +50,7 @@ function Header() {
             (event.type === 'click' && samePageLinkNavigation(event))
         ) {
             setValue(newValue);
+            console.log("New Value: " + newValue);
         }
     };
 
@@ -82,8 +83,7 @@ function Header() {
                 <LinkTab label="Privacy" href="./privacy" />
             </Tabs>
         </Box>
-    </div>
-        ;
+    </div>;
 }
 
 export default Header;

@@ -11,13 +11,12 @@ import Header from './components/header.js';
 function App() {
   return (
     <Router>
-      <Header></Header>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/travel" element={<Travel />} />
+          <Route exact path="/" element={<div><Header selectedInd={0} /> <Home /></div>} />
+          <Route path="/travel" element={<div><Header selectedInd={1} /><Travel /></div>} />
+          <Route path="/contact" element={<div><Header selectedInd={2} /><Contact /></div>} />
+          <Route path="/privacy" element={<div><Header selectedInd={3} /><Privacy /></div>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
