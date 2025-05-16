@@ -1,11 +1,12 @@
 // components/Header.js
 
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+
 
 function samePageLinkNavigation(event) {
     if (
@@ -25,6 +26,8 @@ const handleLinkClick = (path) => {
 };
 
 function LinkTab(props) {
+
+
     return (
         <Tab
             component="a"
@@ -43,8 +46,31 @@ function LinkTab(props) {
     );
 }
 
+
+
 function Header(props) {
     const [value, setValue] = React.useState(props.selectedInd);
+
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    const handleScroll = () => {
+        const position = window.scrollY;
+        setScrollPosition(position);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+
+    const NavBarStyle = {
+        position: 'absolute',
+        top: scrollPosition + window.screen.availHeight / 2 - 144,
+    };
 
     const handleChange = (event, newValue) => {
         // event.type can be equal to focus with selectionFollowsFocus.
@@ -68,24 +94,29 @@ function Header(props) {
             display="flex"
             justifyContent="center"
             alignItems="center">
-            <h4> Last Update: 20 May 2024</h4>
+            <h4> Last Update: 02 Sep 2024</h4>
         </Box>
 
         <hr></hr>
-        <Box sx={{ width: '100%' }}>
+
+        <Box sx={{ height: '100vh' }} style={NavBarStyle}>
             <Tabs
                 value={value}
                 onChange={handleChange}
                 aria-label="nav tabs"
                 role="navigation"
+                orientation="vertical"
                 centered
             >
                 <LinkTab label="Profile" href="#/" onClick={(e) => { e.preventDefault(); handleLinkClick('/'); }} />
-                <LinkTab label="Travel" href="#/travel" onClick={(e) => { e.preventDefault(); handleLinkClick('/travel'); }} />
+                {/* <LinkTab label="Travel" href="#/travel" onClick={(e) => { e.preventDefault(); handleLinkClick('/travel'); }} /> */}
                 <LinkTab label="Contact" href="#/contact" onClick={(e) => { e.preventDefault(); handleLinkClick('/contact'); }} />
                 <LinkTab label="Privacy" href="#/privacy" onClick={(e) => { e.preventDefault(); handleLinkClick('/privacy'); }} />
             </Tabs>
         </Box>
+
+
+
     </div>;
 }
 

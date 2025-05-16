@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--primary-color);
+  scroll-behavior: smooth;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* unvisited link */
+a:link {
+  color: var(--primary-color);
+}
+
+/* visited link */
+a:visited {
+  color: var(--primary-color);
+}
+
+/* mouse over link */
+a:hover {
+  color: var(--secondary-color)
+}
+
+/* selected link */
+a:active {
+  color: var(--selected-color);
+}
+
+.empty {
+  z-index: -1;
 }

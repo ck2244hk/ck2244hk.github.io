@@ -6,19 +6,21 @@ import Contact from './pages/Contact.js';
 import Privacy from './pages/Privacy.js';
 import Travel from './pages/Travel.js';
 import NotFound from './NotFound.js';
-import Header from './components/header.js';
+import FloatNavBar from './components/floatingNavBar.js';
+import HomeBackgroundCanvas from './canvas/HomeBack.js'
+import Experience from './pages/Experience.js';
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <HomeBackgroundCanvas />
         <Routes>
-          <Route path="/" exact element={<div><Header selectedInd={0} /> <Home /></div>} />
-          <Route path="/travel" element={<div><Header selectedInd={1} /><Travel /></div>} />
-          <Route path="/contact" element={<div><Header selectedInd={2} /><Contact /></div>} />
-          <Route path="/privacy" element={<div><Header selectedInd={3} /><Privacy /></div>} />
+          <Route path="/" exact element={<Home />} />
+          <Route path="/experience" element={<Experience/>}></Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
+
       </div>
     </Router>
   );
